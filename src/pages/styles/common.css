@@ -115,6 +115,7 @@ h6 {
 }
 
 .header-menu-button {
+    border: none;
     display: flex;
     flex-direction: column;
     justify-content: center;

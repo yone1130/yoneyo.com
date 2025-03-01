@@ -52,7 +52,7 @@ function _headerLogo() {
 
 function _headerMenuButton() {
     return document.createRange().createContextualFragment(`
-        <div id="headerMenuButton" class="header-menu-button">
+        <button id="headerMenuButton" class="header-menu-button">
             <span class="material-symbols-outlined header-menu-button-icon--open">
                 menu
             </span>
@@ -60,13 +60,13 @@ function _headerMenuButton() {
             <span class="material-symbols-outlined header-menu-button-icon--close">
                 close
             </span>
-        </div>
+        </button>
     `);
 }
 
 function _headerMenu() {
     return document.createRange().createContextualFragment(`
-        <div id="headerMenu" class="header-menu">
+        <nav id="headerMenu" class="header-menu">
             <ul class="header-menu__list">
                 <li class="header-menu__item">
                     <a href="/">ホーム</a>
@@ -76,7 +76,7 @@ function _headerMenu() {
                     <a href="/#contact" id="headerMenuContactLink">お問い合わせ</a>
                 </li>
             </ul>
-        </div>
+        </nav>
     `);
 }
 
