@@ -20,7 +20,7 @@
     --page-main-font-family: "Noto Sans JP", sans-serif;
     --header-height: 4.5em;
     --footer-height: 7em;
-    --main-min-height: calc(100dvh - var(--header-height));
+    --main-min-height: calc(100dvh - var(--header-height) - var(--footer-height));
 }
 
 * {
