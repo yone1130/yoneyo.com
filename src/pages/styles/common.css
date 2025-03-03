@@ -57,9 +57,7 @@ header {
 }
 
 main {
-    position: absolute;
-    top: var(--header-height);
-    left: 0;
+    margin-top: var(--header-height);
     width: 100%;
     min-height: var(--main-min-height);
 }
