@@ -11,90 +11,152 @@
 
 "use strict";
 
+import { Render } from "https://cdn.yoneyo.com/scripts/render-v1.0.0.mjs";
+
+const render = new Render();
+
+
 document.addEventListener("DOMContentLoaded", () => {
-    const header = document.querySelector("header");
-    const footer = document.querySelector("footer");
+    const _header = () => document.querySelector("header");
+    const _footer = () => document.querySelector("footer");
 
-    header.appendChild(_header());
-    footer.appendChild(_footer());
+    render.build({
+        target: _header(),
+        children: header(),
+    });
 
-    const headerMenu = document.getElementById("headerMenu");
-    const headerMenuButton = document.getElementById("headerMenuButton");
-    const headerMenuContactLink = document.getElementById("headerMenuContactLink");
-
-    headerMenuButton.addEventListener("click", () => onClickHeaderMenuButton(headerMenu, headerMenuButton));
-    headerMenuContactLink.addEventListener("click", () => onClickHeaderMenuContactLink(headerMenu, headerMenuButton));
+    render.build({
+        target: _footer(),
+        children: footer(),
+    });
 });
 
-function _header() {
-    const headerLogo = _headerLogo().firstElementChild.outerHTML;
-    const headerMenuButton = _headerMenuButton().firstElementChild.outerHTML;
-    const headerMenu = _headerMenu().firstElementChild.outerHTML;
 
-    return document.createRange().createContextualFragment(`
-        <div class="header-wrapper">
-            ${headerLogo}
-            ${headerMenuButton}
-        </div>
-
-        ${headerMenu}
-    `);
+function header() {
+    return [
+        headerWrapper(),
+        headerMenu(),
+    ]
 }
 
-function _headerLogo() {
-    return document.createRange().createContextualFragment(`
-        <div id="headerLogo" class="header-logo">
-            <img class="header-logo-image" src="https://cdn.yoneyo.com/images/yone_logos/yone_icon.png" alt="Yone's icon">
-            <span class="header-title"> よね/Yone </span>
-        </div>
-    `);
+
+function footer() {
+    return [
+        footerWrapper(),
+    ];
 }
 
-function _headerMenuButton() {
-    return document.createRange().createContextualFragment(`
-        <button id="headerMenuButton" class="header-menu-button">
-            <span class="material-symbols-outlined header-menu-button-icon--open">
-                menu
-            </span>
 
-            <span class="material-symbols-outlined header-menu-button-icon--close">
-                close
-            </span>
-        </button>
-    `);
+function headerWrapper() {
+    return render.$div({
+        className: "header-wrapper",
+        children: [
+            headerLogo(),
+            headerMenuButton(),
+        ],
+    });
 }
 
-function _headerMenu() {
-    return document.createRange().createContextualFragment(`
-        <nav id="headerMenu" class="header-menu">
-            <ul class="header-menu__list">
-                <li class="header-menu__item">
-                    <a href="/">ホーム</a>
-                </li>
 
-                <li class="header-menu__item">
-                    <a href="/#contact" id="headerMenuContactLink">お問い合わせ</a>
-                </li>
-            </ul>
-        </nav>
-    `);
+function headerMenu() {
+    return render.$nav({
+        id: "headerMenu",
+        className: "header-menu",
+        children: [
+            render.$ul({
+                className: "header-menu__list",
+                children: [
+                    render.$li({
+                        className: "header-menu__item",
+                        children: [
+                            render.$a({
+                                href: "/",
+                                innerText: "ホーム",
+                            }),
+                        ],
+                    }),
+                    render.$li({
+                        className: "header-menu__item",
+                        children: [
+                            render.$a({
+                                id: "headerMenuContactLink",
+                                href: "/#contact",
+                                onClick: onClickHeaderMenuContactLink,
+                                innerText: "お問い合わせ",
+                            }),
+                        ],
+                    }),
+                ],
+            }),
+        ],
+    });
 }
 
-function _footer() {
-    return document.createRange().createContextualFragment(`
-        <div class="footer-wrapper">
-            <span class="footer-copyright">&copy; よね/Yone</span>
-        </div>
-    `);
+
+function footerWrapper() {
+    return render.$div({
+        className: "footer-wrapper",
+        children: [
+            render.$span({
+                className: "footer-copyright",
+                innerHTML: "&copy; よね/Yone",
+            }),
+        ],
+    });
 }
 
-function onClickHeaderMenuButton(headerMenu, headerMenuButton) {
+
+function headerLogo() {
+    return render.$div({
+        id: "headerLogo",
+        className: "header-logo",
+        children: [
+            render.$img({
+                className: "header-logo-image",
+                src: "https://cdn.yoneyo.com/images/yone_logos/yone_icon.png",
+                alt: "Yone's icon",
+            }),
+            render.$span({
+                className: "header-title",
+                innerText: " よね/Yone ",
+            }),
+        ],
+    });
+}
+
+
+function headerMenuButton() {
+    return render.$button({
+        id: "headerMenuButton",
+        className: "header-menu-button",
+        onClick: onClickHeaderMenuButton,
+        children: [
+            render.$span({
+                className: "material-symbols-outlined header-menu-button-icon--open",
+                innerText: "menu",
+            }),
+            render.$span({
+                className: "material-symbols-outlined header-menu-button-icon--close",
+                innerText: "close",
+            }),
+        ],
+    });
+}
+
+
+function onClickHeaderMenuButton() {
+    const headerMenu = document.getElementById("headerMenu");
+    const headerMenuButton = document.getElementById("headerMenuButton");
     headerMenuToggle(headerMenu, headerMenuButton);
 }
 
-function onClickHeaderMenuContactLink(headerMenu, headerMenuButton) {
+
+function onClickHeaderMenuContactLink() {
+    const headerMenu = document.getElementById("headerMenu");
+    const headerMenuButton = document.getElementById("headerMenuButton");
     headerMenuToggle(headerMenu, headerMenuButton);
 }
+
 
 function headerMenuToggle(headerMenu, headerMenuButton) {
     headerMenuButton.classList.toggle("enabled");
