@@ -247,6 +247,10 @@ h6 {
 }
 
 .errors-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     overflow: auto;
 }
 
@@ -276,6 +280,15 @@ h6 {
 
 .section:nth-of-type(odd) {
     background-color: var(--section-odd-background-color);
+}
+
+.section__content {
+    --padding: 1rem;
+    width: calc(100% - var(--padding) * 2);
+    height: calc(100% - var(--padding) * 2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .section__title {
@@ -327,4 +340,18 @@ h6 {
 
 .gap-half {
     gap: 0.5em;
+}
+
+.adsense {
+    --padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% - var(--padding) * 2);
+    max-width: 512px;
+    height: calc(256px - var(--padding) * 2);
+    border-radius: 1rem;
+    gap: 1rem;
+    padding: var(--padding);
+    background-color: #00000020;
 }

@@ -153,6 +153,7 @@ main a {
     .links__content {
         display: flex;
         flex-direction: row;
+        justify-content: center;
     }
 
     .links__ol {
