@@ -172,16 +172,32 @@ function navLinks({ isHeader, id }) {
                             }),
                         ],
                     }),
-                    render.$li({
-                        className: "navLinks__item",
-                        children: [
-                            render.$a({
-                                href: "/#contact",
-                                innerText: "お問い合わせ",
-                                children: [chevronRight()],
-                            }),
-                        ],
-                    }),
+                    (() => {
+                        if (isHeader) {
+                            return render.$li({
+                                className: "navLinks__item",
+                                children: [
+                                    render.$a({
+                                        href: "/#contact",
+                                        innerText: "お問い合わせ",
+                                        onClick: () => onClickHeaderMenuContactLink(),
+                                        children: [chevronRight()],
+                                    }),
+                                ],
+                            });
+                        } else {
+                            return render.$li({
+                                className: "navLinks__item",
+                                children: [
+                                    render.$a({
+                                        href: "/#contact",
+                                        innerText: "お問い合わせ",
+                                        children: [chevronRight()],
+                                    }),
+                                ],
+                            });
+                        }
+                    })(),
                 ],
             }),
         ],
@@ -212,6 +228,6 @@ function onClickHeaderMenuContactLink() {
 
 
 function headerMenuToggle(headerMenu, headerMenuButton) {
-    headerMenuButton.classList.toggle("enabled");
     headerMenu.classList.toggle("enabled");
+    headerMenuButton.classList.toggle("enabled");
 }
