@@ -1,0 +1,262 @@
+<!--
+
+    Yone Website
+
+    Copyright (C) よね/Yone
+
+    No modification or reproduction of any kind is permitted.
+    改変や複製を一切禁じます。
+
+-->
+<!DOCTYPE html>
+<html lang="ja-JP">
+
+<head prefix="og: https://ogp.me/ns#">
+    <meta charset="UTF-8">
+
+    <!-- Meta -->
+    <title>サイトマップ | よね/Yone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="よね/Yone のホームページのサイトマップです。">
+
+    <!-- OGP -->
+    <meta property="og:url" content="https://www.yoneyo.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="よね/Yone">
+    <meta property="og:title" content="サイトマップ">
+    <meta property="og:description" content="よね/Yone のホームページのサイトマップです。">
+    <meta property="og:image" content="https://cdn.yoneyo.com/images/yone_logos/yone_icon.png">
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="https://cdn.yoneyo.com/images/yone_logos/yone_icon.png" type="image/x-icon">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles/common.css">
+    <link rel="stylesheet" href="/styles/animations.css">
+
+    <style>
+        main {
+            --padding-top-bottom: 4rem;
+            --padding-left-right: 1rem;
+
+            width: calc(100% - var(--padding-left-right) * 2);
+            height: auto;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+
+            padding: var(--padding-top-bottom) var(--padding-left-right);
+
+            gap: 4rem;
+        }
+
+        /* section */
+
+        .section {
+            --padding-top-bottom: 1rem;
+            --padding-left-right: 1rem;
+
+            width: calc(100% - var(--padding-left-right) * 2);
+            height: auto;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+
+            padding: var(--padding-top-bottom) var(--padding-left-right);
+
+            gap: 2rem;
+        }
+
+        /* sitemap */
+
+        .sitemap__list--1 {
+            --padding: 1rem;
+
+            width: calc(100% - var(--padding) * 2);
+            height: auto;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: var(--padding);
+
+            gap: 1rem;
+
+            /* list-style: none; */
+        }
+
+        .sitemap__list--1 a {
+            position: relative;
+
+            width: fit-content;
+            height: auto;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0.5rem;
+
+            font-weight: 400;
+            color: var(--font-color-black);
+            text-decoration: none;
+            
+            transition: font-size 0.3s, font-weight 0.3s;
+            user-select: none;
+        }
+        
+        .sitemap__item--1 a:hover {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .sitemap__list--1 a::after {
+            position: absolute;
+            bottom: -0.2em;
+
+            margin: auto;
+
+            width: 0;
+            height: 2px;
+
+            display: block;
+
+            background-color: var(--font-color-black);
+            content: "";
+            
+            transition: all 0.3s;
+        }
+        
+        .sitemap__list--1 a:hover::after {
+            width: 100%;
+        }
+
+        .sitemap__list--2 {
+            --padding-top-bottom: 1rem;
+            --padding-left-right: 2rem;
+
+            width: calc(100% - var(--padding-left-right) * 2);
+            height: auto;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: var(--padding-top-bottom) var(--padding-left-right);
+
+            gap: 1rem;
+
+            /* list-style: none; */
+        }
+
+        /* max-width */
+
+        .max-width-768px {
+            max-width: 768px;
+        }
+    </style>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/scripts/common.mjs" type="module" defer></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R0572PDB7N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-R0572PDB7N');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4842259448644646"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <section class="section max-width-768px">
+            <h1 class="section__title">サイトマップ</h1>
+
+            <div class="section__content">
+                <ul class="sitemap__list--1">
+                    <li class="sitemap__item--1">
+                        <a href="/">
+                            <span>ホーム</span>
+                        </a>
+                    </li>
+
+                    <li class="sitemap__item--1">
+                        <a href="/contact-policy/">
+                            <span>お問い合わせフォーム プライバシーポリシー</span>
+                        </a>
+                    </li>
+
+                    <li class="sitemap__item--1">
+                        <a href="/discord-server-rules/">
+                            <span>Discordサーバールール</span>
+                        </a>
+                    </li>
+
+                    <li class="sitemap__item--1">
+                        <a href="/hosts/">
+                            サブドメインリスト
+                        </a>
+                    </li>
+
+                    <li class="sitemap__item--1">
+                        <a href="/support/">
+                            <span>よね/Yone を支援する</span>
+                        </a>
+
+                        <ul class=" sitemap__list--2">
+                            <li class="sitemap__item--2">
+                                <a href="/support/kyash/">
+                                    <span>Kyash支援</span>
+                                </a>
+                            </li>
+
+                            <li class="sitemap__item--2">
+                                <a href="/support/paypay/">
+                                    <span>PayPay支援</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Google AdSense -->
+        <section class="adsense">
+            <span>Ad</span>
+
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4842259448644646"
+                data-ad-slot="6212268717" data-ad-format="auto" data-full-width-responsive="true">
+            </ins>
+
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </section>
+        <!-- /Google AdSense -->
+    </main>
+
+    <footer></footer>
+</body>
+
+</html>

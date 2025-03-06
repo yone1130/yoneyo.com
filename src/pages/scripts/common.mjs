@@ -1,4 +1,4 @@
-/*
+/*!
  *
  * Yone Website
  *
@@ -136,38 +136,12 @@ function navLinks({ isHeader, id }) {
             render.$ul({
                 className: "navLinks__list",
                 children: [
-                    (() => {
-                        if (isHeader) {
-                            return render.$li({
-                                className: "navLinks__item",
-                                children: [
-                                    render.$a({
-                                        href: "/",
-                                        innerText: "ホーム",
-                                        children: [chevronRight()],
-                                    }),
-                                ],
-                            });
-                        }
-
-                        return [];
-                    })(),
                     render.$li({
                         className: "navLinks__item",
                         children: [
                             render.$a({
-                                href: "/sitemap/",
-                                innerText: "サイトマップ",
-                                children: [chevronRight()],
-                            }),
-                        ],
-                    }),
-                    render.$li({
-                        className: "navLinks__item",
-                        children: [
-                            render.$a({
-                                href: "/hosts/",
-                                innerText: "ドメインリスト",
+                                href: "/",
+                                innerText: "ホーム",
                                 children: [chevronRight()],
                             }),
                         ],
@@ -198,6 +172,26 @@ function navLinks({ isHeader, id }) {
                             });
                         }
                     })(),
+                    render.$li({
+                        className: "navLinks__item",
+                        children: [
+                            render.$a({
+                                href: "/sitemap/",
+                                innerText: "サイトマップ",
+                                children: [chevronRight()],
+                            }),
+                        ],
+                    }),
+                    render.$li({
+                        className: "navLinks__item",
+                        children: [
+                            render.$a({
+                                href: "/hosts/",
+                                innerText: "サブドメインリスト",
+                                children: [chevronRight()],
+                            }),
+                        ],
+                    }),
                 ],
             }),
         ],

@@ -24,10 +24,11 @@
     --header-height: 4.5em;
 
     /* Footer */
-    --footer-width: 100% --footer-height: auto;
+    --footer-width: 100%;
+    --footer-height: auto;
 
     /* Main */
-    --main-min-height: calc(100dvh - var(--header-height) - var(--footer-height));
+    --main-min-height: calc(100dvh - var(--header-height));
 }
 
 * {
@@ -209,6 +210,8 @@ main {
 /* footer */
 
 footer {
+    --footer-width: calc(var(var(--footer-width)) - 4rem)
+
     width: var(--footer-width);
     height: var(--footer-height);
 
@@ -473,6 +476,8 @@ h6 {
     font-size: 1.2rem;
     text-decoration: none;
     color: #f0f0f0;
+
+    user-select: none;
 }
 
 .navLinks__item a::after {
@@ -494,5 +499,4 @@ h6 {
 
 .navLinks__item a:hover::after {
     width: 100%;
-
 }
