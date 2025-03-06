@@ -34,13 +34,22 @@ document.addEventListener("DOMContentLoaded", () => {
 function header() {
     return [
         headerWrapper(),
-        headerMenu(),
+        headerMenu(
+            navLinks({
+                isHeader: true,
+                id: "headerNavLinks",
+            })
+        ),
     ]
 }
 
 
 function footer() {
     return [
+        navLinks({
+            isHeader: false,
+            id: "footerNavLinks",
+        }),
         footerWrapper(),
     ];
 }
@@ -57,36 +66,12 @@ function headerWrapper() {
 }
 
 
-function headerMenu() {
-    return render.$nav({
+function headerMenu(navLinks) {
+    return render.$div({
         id: "headerMenu",
         className: "header-menu",
         children: [
-            render.$ul({
-                className: "header-menu__list",
-                children: [
-                    render.$li({
-                        className: "header-menu__item",
-                        children: [
-                            render.$a({
-                                href: "/",
-                                innerText: "ホーム",
-                            }),
-                        ],
-                    }),
-                    render.$li({
-                        className: "header-menu__item",
-                        children: [
-                            render.$a({
-                                id: "headerMenuContactLink",
-                                href: "/#contact",
-                                onClick: onClickHeaderMenuContactLink,
-                                innerText: "お問い合わせ",
-                            }),
-                        ],
-                    }),
-                ],
-            }),
+            navLinks
         ],
     });
 }
@@ -139,6 +124,75 @@ function headerMenuButton() {
                 innerText: "close",
             }),
         ],
+    });
+}
+
+
+function navLinks({ isHeader, id }) {
+    return render.$nav({
+        id: id,
+        className: "navLinks",
+        children: [
+            render.$ul({
+                className: "navLinks__list",
+                children: [
+                    (() => {
+                        if (isHeader) {
+                            return render.$li({
+                                className: "navLinks__item",
+                                children: [
+                                    render.$a({
+                                        href: "/",
+                                        innerText: "ホーム",
+                                        children: [chevronRight()],
+                                    }),
+                                ],
+                            });
+                        }
+
+                        return [];
+                    })(),
+                    render.$li({
+                        className: "navLinks__item",
+                        children: [
+                            render.$a({
+                                href: "/sitemap/",
+                                innerText: "サイトマップ",
+                                children: [chevronRight()],
+                            }),
+                        ],
+                    }),
+                    render.$li({
+                        className: "navLinks__item",
+                        children: [
+                            render.$a({
+                                href: "/hosts/",
+                                innerText: "ドメインリスト",
+                                children: [chevronRight()],
+                            }),
+                        ],
+                    }),
+                    render.$li({
+                        className: "navLinks__item",
+                        children: [
+                            render.$a({
+                                href: "/#contact",
+                                innerText: "お問い合わせ",
+                                children: [chevronRight()],
+                            }),
+                        ],
+                    }),
+                ],
+            }),
+        ],
+    });
+}
+
+
+function chevronRight() {
+    return render.$span({
+        className: "material-symbols-outlined",
+        innerText: "chevron_right",
     });
 }
 
