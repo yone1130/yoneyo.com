@@ -16,16 +16,16 @@ const render = new Render();
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const _header = () => document.querySelector("header");
-    const _footer = () => document.querySelector("footer");
+    const headerElement = document.querySelector("header");
+    const footerElement = document.querySelector("footer");
 
     render.build({
-        target: _header(),
+        target: headerElement,
         children: header(),
     });
 
     render.build({
-        target: _footer(),
+        target: footerElement,
         children: footer(),
     });
 });
@@ -102,7 +102,7 @@ function headerLogo() {
             }),
             render.$span({
                 className: "header-title",
-                innerText: " よね/Yone ",
+                textContent: " よね/Yone ",
             }),
         ],
     });
@@ -117,11 +117,11 @@ function headerMenuButton() {
         children: [
             render.$span({
                 className: "material-symbols-outlined header-menu-button-icon--open",
-                innerText: "menu",
+                textContent: "menu",
             }),
             render.$span({
                 className: "material-symbols-outlined header-menu-button-icon--close",
-                innerText: "close",
+                textContent: "close",
             }),
         ],
     });
@@ -141,7 +141,7 @@ function navLinks({ isHeader, id }) {
                         children: [
                             render.$a({
                                 href: "/",
-                                innerText: "ホーム",
+                                textContent: "ホーム",
                                 children: [chevronRight()],
                             }),
                         ],
@@ -153,7 +153,7 @@ function navLinks({ isHeader, id }) {
                                 children: [
                                     render.$a({
                                         href: "/#contact",
-                                        innerText: "お問い合わせ",
+                                        textContent: "お問い合わせ",
                                         onClick: () => onClickHeaderMenuContactLink(),
                                         children: [chevronRight()],
                                     }),
@@ -165,7 +165,7 @@ function navLinks({ isHeader, id }) {
                                 children: [
                                     render.$a({
                                         href: "/#contact",
-                                        innerText: "お問い合わせ",
+                                        textContent: "お問い合わせ",
                                         children: [chevronRight()],
                                     }),
                                 ],
@@ -177,7 +177,7 @@ function navLinks({ isHeader, id }) {
                         children: [
                             render.$a({
                                 href: "/sitemap/",
-                                innerText: "サイトマップ",
+                                textContent: "サイトマップ",
                                 children: [chevronRight()],
                             }),
                         ],
@@ -187,7 +187,7 @@ function navLinks({ isHeader, id }) {
                         children: [
                             render.$a({
                                 href: "/hosts/",
-                                innerText: "サブドメインリスト",
+                                textContent: "サブドメインリスト",
                                 children: [chevronRight()],
                             }),
                         ],
@@ -202,7 +202,7 @@ function navLinks({ isHeader, id }) {
 function chevronRight() {
     return render.$span({
         className: "material-symbols-outlined",
-        innerText: "chevron_right",
+        textContent: "chevron_right",
     });
 }
 
