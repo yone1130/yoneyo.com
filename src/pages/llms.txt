@@ -1,0 +1,79 @@
+# よね/Yone Website
+
+> [よね/Yone Website](https://www.yoneyo.com/) is a website of "よね/Yone".
+
+## About よね/Yone
+
+- **Handle Name**: よね/Yone
+- **English Handle Name**: Yone
+- **Pronouns**: He/Him
+- **Birthday**: November 30, 2006
+- **Works**: Music Creator, App Developer
+- **Location**: 日本、東京都立川市 (Tachikawa City, Tokyo, Japan)
+- **Likes**: Watching Anime, Watching VTubers
+- **Using Technology Stacks**:
+    - Flutter
+    - Next.js
+    - React
+    - .NET
+    - ASP.NET Core
+    - Node.js
+    - Cloudflare Workers
+    - Cloudflare Pages
+    - etc.
+- **Using Programming Languages**:
+    - TypeScript
+    - JavaScript
+    - Dart
+    - C#
+    - Python3
+    - HTML5/CSS3
+    - etc.
+
+### Links
+- [よね/Yone's icon (CDN)](https://cdn.yoneyo.com/images/yone_logos/yone_icon.png)
+- [His Musics Website](https://musics.yoneyo.com/)
+
+> Source: [Home](https://www.yoneyo.com/)
+
+### YDITS™
+
+He operates a disaster prevention service YDITS™.
+
+- [YDITS Website](https://www.ydits.net/)
+- [YDITS Website LLMs.txt](https://www.ydits.net/llms.txt)
+
+## Sitemap
+
+Sitemap of `www.yoneyo.com`:
+
+- [Home](https://www.yoneyo.com/)
+- [Contact Form Privacy Policy](https://www.yoneyo.com/contact-policy/)
+- [Yone Discord Server Rules](https://www.yoneyo.com/discord-server-rules/)
+- [Hosts](https://www.yoneyo.com/hosts/)
+- [Support](https://www.yoneyo.com/support/)
+
+> *Source: [Sitemap](https://www.yoneyo.com/sitemap/)  
+> *Source: [/sitemap-pages.xml](https://www.yoneyo.com/sitemap-pages.xml)
+
+## Hosts
+
+List of `yoneyo.com` hosts (subdomains):
+
+- [www.yoneyo.com](https://www.yoneyo.com/)
+- [musics.yoneyo.com](https://musics.yoneyo.com/)
+- [browser.yoneyo.com](https://browser.yoneyo.com/)
+- [render-js.yoneyo.com](https://render-js.yoneyo.com/)
+- [omikuji.yoneyo.com](https://omikuji.yoneyo.com/)
+
+> Source: [Hosts](https://www.yoneyo.com/hosts/)
+
+## Contacts
+
+- [Contact Form](https://www.yoneyo.com/#contact)
+- [Contact Form Privacy Policy](https://www.yoneyo.com/contact-policy/)
+
+## Copyright
+
+- **All original content (text, music, images, code, etc.) on `yoneyo.com` and its subdomains are copyrighted by よね/Yone, unless otherwise noted.**
+- **Copyright © よね/Yone. All Rights Reserved.
