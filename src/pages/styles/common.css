@@ -54,7 +54,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 199;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -144,7 +144,7 @@ header {
     padding: var(--padding-top-bottom) var(--padding-left-right);
     gap: 4rem;
 
-    z-index: 1;
+    z-index: 100;
     transition: left 0.3s;
 }
 
