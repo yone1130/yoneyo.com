@@ -28,7 +28,7 @@
     --footer-height: auto;
 
     /* Main */
-    --main-min-height: calc(100dvh - var(--header-height));
+    --main-min-height: calc(100dvh - var(--header-height) * 2);
 }
 
 * {
@@ -320,8 +320,8 @@ h6 {
 .errors-page {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-
     overflow: auto;
 }
 
