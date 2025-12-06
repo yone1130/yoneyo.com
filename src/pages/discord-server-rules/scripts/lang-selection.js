@@ -55,7 +55,7 @@ class LanguageSelector {
             navigator.language || navigator.userLanguage
         ).toLowerCase();
 
-        return LANGUAGE_TO_FULL_NAMES[clientLanguage] || LanguageSelector.DEFAULT_LANGUAGE;
+        return LanguageSelector.LANGUAGE_TO_FULL_NAMES[clientLanguage] || LanguageSelector.DEFAULT_LANGUAGE;
     }
 
     /**
