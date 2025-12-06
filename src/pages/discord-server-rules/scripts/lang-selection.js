@@ -1,4 +1,4 @@
-/*
+/**!
  *
  * Yone Website
  *
@@ -9,79 +9,102 @@
  *
  */
 
-"use strict";
-
-(() => {
-    const langSelection = class {
-        get langs() {
-            return ["ja-jp", "en-us"];
-        }
-
-        constructor() {
-            this.getClientLang();
-            this.changePageLang(this.pageLang);
-            this.init();
-        }
-
-        getClientLang() {
-            const langsMap = {
-                ja: "ja-jp",
-                en: "en-us",
-            };
-
-            const defaultLang = "en-us";
-
-            this.pageLang = localStorage.getItem("lang");
-
-            if (this.pageLang !== null) {
-                return;
-            }
-
-            const userLang = (
-                navigator.language || navigator.userLanguage
-            ).toLowerCase();
-
-            this.pageLang = langsMap[userLang] || defaultLang;
-
-            localStorage.setItem("lang", this.pageLang);
-        }
-
-        changePageLang(lang) {
-            switch (lang) {
-                case "ja-jp":
-                    document.documentElement.lang = "ja-JP";
-                    document.title = pageTitleLangs["ja-JP"];
-                    document.body.classList.remove(...this.langs);
-                    document.body.classList.add("ja-jp");
-                    localStorage.setItem("lang", "ja-jp");
-                    break;
-
-                case "en-us":
-                    document.documentElement.lang = "en-US";
-                    document.title = pageTitleLangs["en-US"];
-                    document.body.classList.remove(...this.langs);
-                    document.body.classList.add("en-us");
-                    localStorage.setItem("lang", "en-us");
-                    break;
-
-                default:
-                    document.documentElement.lang = "en-US";
-                    document.title = pageTitleLangs["en-US"];
-                    document.body.classList.remove(...this.langs);
-                    document.body.classList.add("en-us");
-                    localStorage.setItem("lang", "en-us");
-                    break;
-            }
-        }
-
-        init() {
-            this.langs.forEach((lang) => {
-                $(document).on("click", `#langsLists .${lang}`, () => {
-                    this.changePageLang(lang);
-                });
-            });
-        }
+class LanguageSelector {
+    static LANGUAGES_MAP = {
+        "ja-jp": "ja-JP",
+        "en-us": "en-US",
     };
 
-    $(() => new langSelection());
-})();
+    static DEFAULT_LANGUAGE = "ja-jp";
+
+    static AVAILABLE_LANGUAGES = Object.keys(LanguageSelector.LANGUAGES_MAP);
+
+    static LANGUAGE_TO_FULL_NAMES = {
+        ja: "ja-jp",
+        en: "en-us",
+    }
+
+    static LOCAL_STORAGE_KEY = "language";
+
+    constructor() { }
+
+    /**
+     * Initialize language selection system.
+     * 
+     * @returns {Promise<void>}
+     */
+    async initialize() {
+        const initialLanguage = this.#getClientLanguage();
+        this.#changePageLanguage(initialLanguage);
+        this.#setupLanguageSwitchingEvents();
+    }
+
+    /**
+     * Get client's preferred language.
+     * 
+     * @returns {string}
+     */
+    #getClientLanguage() {
+        const savedLanguage = localStorage.getItem(LanguageSelector.LOCAL_STORAGE_KEY);
+
+        if (typeof savedLanguage === "string") {
+            return savedLanguage;
+        }
+
+        const clientLanguage = (
+            navigator.language || navigator.userLanguage
+        ).toLowerCase();
+
+        return clientLanguage || LanguageSelector.DEFAULT_LANGUAGE;
+    }
+
+    /**
+     * Change the page language.
+     * 
+     * @param {string} language Language code.
+     * @return {void}
+     */
+    #changePageLanguage(language) {
+        const uppercaseLanguage = LanguageSelector.LANGUAGES_MAP[language];
+
+        if (typeof uppercaseLanguage === "string") {
+            document.documentElement.lang = uppercaseLanguage;
+            document.title = pageTitleLangs[uppercaseLanguage];
+        } else {
+            document.documentElement.lang = LanguageSelector.LANGUAGES_MAP[LanguageSelector.DEFAULT_LANGUAGE];
+            document.title = pageTitleLangs[LanguageSelector.LANGUAGES_MAP[LanguageSelector.DEFAULT_LANGUAGE]];
+        }
+
+        document.body.classList.remove(...LanguageSelector.AVAILABLE_LANGUAGES);
+        document.body.classList.add(language);
+        localStorage.setItem(LanguageSelector.LOCAL_STORAGE_KEY, language);
+    }
+
+    /**
+     * Setup language switching events.
+     * 
+     * @return {void}
+     */
+    #setupLanguageSwitchingEvents() {
+        LanguageSelector.AVAILABLE_LANGUAGES.forEach((language) => {
+            document.querySelectorAll(`#langsLists .${language}`).forEach((element) => {
+                element.addEventListener("click", async () => this.#onClickLanguageButton(language));
+            });
+        });
+    }
+
+    /**
+     * Handle language button click event.
+     * 
+     * @param {string} language Language code.
+     * @return {void}
+     */
+    #onClickLanguageButton(language) {
+        this.#changePageLanguage(language);
+    }
+};
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const languageSelector = new LanguageSelector();
+    await languageSelector.initialize();
+});
