@@ -14,6 +14,6 @@ Deploy directory `src/pages/`.
 
 ## License
 
-No licensed.
+This project is not licensed.
 
-Copyright &copy; よね/Yone
+Copyright © よね/Yone

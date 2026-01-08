@@ -14,6 +14,6 @@ https://www.yoneyo.com/ で公開しています。
 
 ## ライセンス
 
-ライセンスなし。
+このプロジェクトはライセンスされません。
 
-Copyright &copy; よね/Yone
+Copyright © よね/Yone

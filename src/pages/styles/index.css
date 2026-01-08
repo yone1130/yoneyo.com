@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/*
+/*!
 
     Yone Website
 
@@ -15,11 +15,11 @@ main {
     --section-odd-background-color: #e0e0e0ff;
     --font-color-bule: #40a0f0ff;
     --header-height: 4.5em;
-}
 
-main a {
-    color: var(--font-color-bule);
-    text-decoration: none;
+    & a {
+        color: var(--font-color-bule);
+        text-decoration: none;
+    }
 }
 
 .hero-header {
@@ -54,12 +54,14 @@ main a {
     padding-right: 0.5rem;
 }
 
-.about__tr:nth-of-type(odd) {
-    background-color: rgba(0, 0, 64, 0.1);
-}
+.about__tr {
+    &:nth-of-type(odd) {
+        background-color: rgba(0, 0, 64, 0.1);
+    }
 
-.about__tr:nth-of-type(even) {
-    background-color: rgba(0, 0, 64, 0.05);
+    &:nth-of-type(even) {
+        background-color: rgba(0, 0, 64, 0.05);
+    }
 }
 
 .about__th,
@@ -70,11 +72,21 @@ main a {
 
 .links__content {
     gap: 0.8em;
+
+    @media (max-width: 769px) {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
 }
 
 .links__ol {
     display: flex;
     gap: 0.8em;
+
+    @media (max-width: 769px) {
+        flex-direction: column;
+    }
 }
 
 .links__li {
@@ -82,11 +94,12 @@ main a {
     width: 7em;
     height: 100%;
     border-radius: 0.5rem;
+
+    &:hover {
+        background-color: #80808040;
+    }
 }
 
-.links__li:hover {
-    background-color: #80808040;
-}
 
 .links__a {
     display: flex;
@@ -147,16 +160,4 @@ main a {
     padding-left: 1rem;
     padding-right: 1rem;
     font-size: 0.7em;
-}
-
-@media (max-width: 769px) {
-    .links__content {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
-
-    .links__ol {
-        flex-direction: column;
-    }
 }
