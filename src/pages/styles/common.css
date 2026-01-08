@@ -138,7 +138,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
     background-color: #ddd;
 
     padding: var(--padding-top-bottom) var(--padding-left-right);
@@ -210,8 +210,7 @@ main {
 /* footer */
 
 footer {
-    --footer-width: calc(var(var(--footer-width)) - 4rem)
-
+    --footer-width: calc(var(var(--footer-width)) - 4rem);
     width: var(--footer-width);
     height: var(--footer-height);
 
@@ -248,10 +247,18 @@ h6 {
 }
 
 .material-symbols-outlined {
-    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
 }
-
-
 
 /* footer */
 
