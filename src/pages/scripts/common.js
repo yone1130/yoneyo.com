@@ -9,219 +9,319 @@
  *
  */
 
-import { Render } from "https://cdn.yoneyo.com/scripts/render/render-v1.0.0.mjs";
+import { Render } from "https://cdn.yoneyo.com/scripts/render@1.0.0/render.js";
 
+class Page {
+    /**
+     * @param {{
+     *     render: Render,
+     * }}
+     */
+    constructor({ render }) {
+        if (!(render instanceof Render)) {
+            throw new Error("`render` argument must be an instance of Render");
+        }
 
+        this.render = render;
+    }
+
+    /**
+     * @returns {Promise<void>}
+     */
+    async initialize() {
+        this.#loadCommonElements(
+            document.querySelector("header"),
+            document.querySelector("footer"),
+        );
+
+        this.#headerMenuElement = document.getElementById(Page.#headerMenuElementId);
+        this.#headerMenuButtonElement = document.getElementById(Page.#headerMenuButtonElementId);
+    }
+
+    /**
+     * @type {string}
+     */
+    static #headerMenuElementId = "headerMenu";
+
+    /**
+     * @type {string}
+     */
+    static #headerMenuButtonElementId = "headerMenuButton";
+
+    /**
+     * @type {HTMLElement | null}
+     */
+    #headerMenuElement = null;
+
+    /**
+     * @type {HTMLElement | null}
+     */
+    #headerMenuButtonElement = null;
+
+    /**
+     * @returns {void}
+     */
+    #loadCommonElements(headerTarget, footerTarget) {
+        this.render.build({
+            target: headerTarget,
+            children: this.#header(),
+        });
+
+        this.render.build({
+            target: footerTarget,
+            children: this.#footer(),
+        });
+    }
+
+    /**
+     * @returns {HTMLElement[]}
+     */
+    #header() {
+        return [
+            this.#headerWrapper(),
+            this.#headerMenu(
+                this.#navLinks({
+                    isHeader: true,
+                    id: "headerNavLinks",
+                }),
+            ),
+        ];
+    }
+
+    /**
+     * @returns {HTMLElement[]}
+     */
+    #footer() {
+        return [
+            this.#navLinks({
+                isHeader: false,
+                id: "footerNavLinks",
+            }),
+            this.#footerWrapper(),
+        ];
+    }
+
+    /**
+     * @returns {HTMLElement[]}
+     */
+    #headerWrapper() {
+        const { $div } = this.render;
+
+        return $div({
+            className: "header-wrapper",
+            children: [
+                this.#headerLogo(),
+                this.#headerMenuButton(),
+            ],
+        });
+    }
+
+    /**
+     * @param {HTMLElement[]} navLinks
+     * @returns {HTMLElement[]}
+     */
+    #headerMenu(navLinks) {
+        const { $div } = this.render;
+
+        return $div({
+            id: Page.#headerMenuElementId,
+            className: "header-menu",
+            children: [
+                navLinks,
+            ],
+        });
+    }
+
+    /**
+     * @returns {HTMLElement[]}
+     */
+    #footerWrapper() {
+        const { $div, $span } = this.render;
+
+        return $div({
+            className: "footer-wrapper",
+            children: [
+                $span({
+                    className: "footer-copyright",
+                    innerHTML: "&copy; よね/Yone",
+                }),
+            ],
+        });
+    }
+
+    /**
+     * @returns {HTMLElement[]}
+     */
+    #headerLogo() {
+        const { $div, $img, $span } = this.render;
+
+        return $div({
+            id: "headerLogo",
+            className: "header-logo",
+            children: [
+                $img({
+                    className: "header-logo-image",
+                    src: "https://cdn.yoneyo.com/images/yone_logos/yone_icon.png",
+                    alt: "Yone's icon",
+                }),
+                $span({
+                    className: "header-title",
+                    textContent: " よね/Yone ",
+                }),
+            ],
+        });
+    }
+
+    /**
+     * @returns {HTMLElement[]}
+     */
+    #headerMenuButton() {
+        const { $button, $span } = this.render;
+
+        return $button({
+            id: Page.#headerMenuButtonElementId,
+            className: "header-menu-button",
+            onClick: () => this.#onClickHeaderMenuButton(),
+            children: [
+                $span({
+                    className: "material-symbols-outlined header-menu-button-icon--open",
+                    textContent: "menu",
+                }),
+                $span({
+                    className: "material-symbols-outlined header-menu-button-icon--close",
+                    textContent: "close",
+                }),
+            ],
+        });
+    }
+
+    /**
+     * @param {{
+     *     isHeader: boolean,
+     *     id: string,
+     * }}
+     * @returns {HTMLElement[]}
+     */
+    #navLinks({ isHeader, id }) {
+        const { $nav, $ul, $li, $a } = this.render;
+
+        return $nav({
+            id: id,
+            className: "navLinks",
+            children: [
+                $ul({
+                    className: "navLinks__list",
+                    children: [
+                        $li({
+                            className: "navLinks__item",
+                            children: [
+                                $a({
+                                    href: "/",
+                                    textContent: "ホーム",
+                                    children: [this.#chevronRight()],
+                                }),
+                            ],
+                        }),
+                        (() => {
+                            if (isHeader) {
+                                return $li({
+                                    className: "navLinks__item",
+                                    children: [
+                                        $a({
+                                            href: "/#contact",
+                                            textContent: "お問い合わせ",
+                                            onClick: () => this.#onClickHeaderMenuContactLink(),
+                                            children: [this.#chevronRight()],
+                                        }),
+                                    ],
+                                });
+                            } else {
+                                return $li({
+                                    className: "navLinks__item",
+                                    children: [
+                                        $a({
+                                            href: "/#contact",
+                                            textContent: "お問い合わせ",
+                                            children: [this.#chevronRight()],
+                                        }),
+                                    ],
+                                });
+                            }
+                        })(),
+                        $li({
+                            className: "navLinks__item",
+                            children: [
+                                $a({
+                                    href: "/sitemap/",
+                                    textContent: "サイトマップ",
+                                    children: [this.#chevronRight()],
+                                }),
+                            ],
+                        }),
+                        $li({
+                            className: "navLinks__item",
+                            children: [
+                                $a({
+                                    href: "/hosts/",
+                                    textContent: "サブドメインリスト",
+                                    children: [this.#chevronRight()],
+                                }),
+                            ],
+                        }),
+                    ],
+                }),
+            ],
+        });
+    }
+
+    /**
+     * @returns {HTMLElement[]}
+     */
+    #chevronRight() {
+        const { $span } = this.render;
+
+        return $span({
+            className: "material-symbols-outlined",
+            textContent: "chevron_right",
+        });
+    }
+
+    /**
+     * @returns {void}
+     */
+    #onClickHeaderMenuButton() {
+        this.#headerMenuToggle();
+    }
+
+    /**
+     * @returns {void}
+     */
+    #onClickHeaderMenuContactLink() {
+        this.#headerMenuToggle();
+    }
+
+    /**
+     * @returns {void}
+     */
+    #headerMenuToggle() {
+        if (this.#headerMenuElement instanceof HTMLElement) {
+            this.#headerMenuElement.classList.toggle("enabled");
+        }
+
+        if (this.#headerMenuButtonElement instanceof HTMLElement) {
+            this.#headerMenuButtonElement.classList.toggle("enabled");
+        }
+    }
+}
+
+/**
+ * @type {Render}
+ */
 const render = new Render();
 
+/**
+ * @type {Page}
+ */
+const page = new Page({ render });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const headerElement = document.querySelector("header");
-    const footerElement = document.querySelector("footer");
-
-    render.build({
-        target: headerElement,
-        children: header(),
-    });
-
-    render.build({
-        target: footerElement,
-        children: footer(),
-    });
-});
-
-
-function header() {
-    return [
-        headerWrapper(),
-        headerMenu(
-            navLinks({
-                isHeader: true,
-                id: "headerNavLinks",
-            })
-        ),
-    ]
-}
-
-
-function footer() {
-    return [
-        navLinks({
-            isHeader: false,
-            id: "footerNavLinks",
-        }),
-        footerWrapper(),
-    ];
-}
-
-
-function headerWrapper() {
-    return render.$div({
-        className: "header-wrapper",
-        children: [
-            headerLogo(),
-            headerMenuButton(),
-        ],
-    });
-}
-
-
-function headerMenu(navLinks) {
-    return render.$div({
-        id: "headerMenu",
-        className: "header-menu",
-        children: [
-            navLinks
-        ],
-    });
-}
-
-
-function footerWrapper() {
-    return render.$div({
-        className: "footer-wrapper",
-        children: [
-            render.$span({
-                className: "footer-copyright",
-                innerHTML: "&copy; よね/Yone",
-            }),
-        ],
-    });
-}
-
-
-function headerLogo() {
-    return render.$div({
-        id: "headerLogo",
-        className: "header-logo",
-        children: [
-            render.$img({
-                className: "header-logo-image",
-                src: "https://cdn.yoneyo.com/images/yone_logos/yone_icon.png",
-                alt: "Yone's icon",
-            }),
-            render.$span({
-                className: "header-title",
-                textContent: " よね/Yone ",
-            }),
-        ],
-    });
-}
-
-
-function headerMenuButton() {
-    return render.$button({
-        id: "headerMenuButton",
-        className: "header-menu-button",
-        onClick: onClickHeaderMenuButton,
-        children: [
-            render.$span({
-                className: "material-symbols-outlined header-menu-button-icon--open",
-                textContent: "menu",
-            }),
-            render.$span({
-                className: "material-symbols-outlined header-menu-button-icon--close",
-                textContent: "close",
-            }),
-        ],
-    });
-}
-
-
-function navLinks({ isHeader, id }) {
-    return render.$nav({
-        id: id,
-        className: "navLinks",
-        children: [
-            render.$ul({
-                className: "navLinks__list",
-                children: [
-                    render.$li({
-                        className: "navLinks__item",
-                        children: [
-                            render.$a({
-                                href: "/",
-                                textContent: "ホーム",
-                                children: [chevronRight()],
-                            }),
-                        ],
-                    }),
-                    (() => {
-                        if (isHeader) {
-                            return render.$li({
-                                className: "navLinks__item",
-                                children: [
-                                    render.$a({
-                                        href: "/#contact",
-                                        textContent: "お問い合わせ",
-                                        onClick: () => onClickHeaderMenuContactLink(),
-                                        children: [chevronRight()],
-                                    }),
-                                ],
-                            });
-                        } else {
-                            return render.$li({
-                                className: "navLinks__item",
-                                children: [
-                                    render.$a({
-                                        href: "/#contact",
-                                        textContent: "お問い合わせ",
-                                        children: [chevronRight()],
-                                    }),
-                                ],
-                            });
-                        }
-                    })(),
-                    render.$li({
-                        className: "navLinks__item",
-                        children: [
-                            render.$a({
-                                href: "/sitemap/",
-                                textContent: "サイトマップ",
-                                children: [chevronRight()],
-                            }),
-                        ],
-                    }),
-                    render.$li({
-                        className: "navLinks__item",
-                        children: [
-                            render.$a({
-                                href: "/hosts/",
-                                textContent: "サブドメインリスト",
-                                children: [chevronRight()],
-                            }),
-                        ],
-                    }),
-                ],
-            }),
-        ],
-    });
-}
-
-
-function chevronRight() {
-    return render.$span({
-        className: "material-symbols-outlined",
-        textContent: "chevron_right",
-    });
-}
-
-
-function onClickHeaderMenuButton() {
-    const headerMenu = document.getElementById("headerMenu");
-    const headerMenuButton = document.getElementById("headerMenuButton");
-    headerMenuToggle(headerMenu, headerMenuButton);
-}
-
-
-function onClickHeaderMenuContactLink() {
-    const headerMenu = document.getElementById("headerMenu");
-    const headerMenuButton = document.getElementById("headerMenuButton");
-    headerMenuToggle(headerMenu, headerMenuButton);
-}
-
-
-function headerMenuToggle(headerMenu, headerMenuButton) {
-    headerMenu.classList.toggle("enabled");
-    headerMenuButton.classList.toggle("enabled");
-}
+await page.initialize();
