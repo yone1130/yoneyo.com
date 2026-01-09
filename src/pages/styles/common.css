@@ -440,16 +440,18 @@ h6 {
 /* adsense */
 
 .adsense {
-    --padding: 1rem;
     display: flex;
+    box-sizing: border-box;
+
+    width: min(100%, 1025px);
+    height: min(auto, 256px);
+    border-radius: 1rem;
+
+    padding: 1rem;
     flex-direction: column;
     align-items: stretch;
-    width: calc(100% - var(--padding) * 2);
-    max-width: 512px;
-    height: calc(256px - var(--padding) * 2);
-    border-radius: 1rem;
     gap: 1rem;
-    padding: var(--padding);
+
     background-color: #00000020;
     text-align: center;
 }
