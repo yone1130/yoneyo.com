@@ -104,7 +104,9 @@ class LanguageSelector {
     }
 };
 
-document.addEventListener("DOMContentLoaded", async () => {
-    const languageSelector = new LanguageSelector();
-    await languageSelector.initialize();
-});
+/**
+ * @type {LanguageSelector}
+ */
+const languageSelector = new LanguageSelector();
+
+await languageSelector.initialize();
