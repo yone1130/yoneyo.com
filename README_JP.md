@@ -1,6 +1,6 @@
 # Yone Website
 
-[→ English](./README.md)
+[Read in English >](./README.md)
 
 ## 概要
 
