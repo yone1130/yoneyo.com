@@ -4,9 +4,6 @@
  *
  * Copyright (C) よね/Yone
  *
- * No modification or reproduction of any kind is permitted.
- * 改変や複製を一切禁じます。
- *
  */
 
 import { Render } from "https://cdn.yoneyo.com/scripts/render@1.0.0/render.js";
@@ -222,32 +219,17 @@ class Page {
                                 }),
                             ],
                         }),
-                        (() => {
-                            if (isHeader) {
-                                return $li({
-                                    className: "navLinks__item",
-                                    children: [
-                                        $a({
-                                            href: "/#contact",
-                                            textContent: "お問い合わせ",
-                                            onClick: () => this.#onClickHeaderMenuContactLink(),
-                                            children: [this.#chevronRight()],
-                                        }),
-                                    ],
-                                });
-                            } else {
-                                return $li({
-                                    className: "navLinks__item",
-                                    children: [
-                                        $a({
-                                            href: "/#contact",
-                                            textContent: "お問い合わせ",
-                                            children: [this.#chevronRight()],
-                                        }),
-                                    ],
-                                });
-                            }
-                        })(),
+                        $li({
+                            className: "navLinks__item",
+                            children: [
+                                $a({
+                                    href: "/#contact",
+                                    textContent: "お問い合わせ",
+                                    onClick: isHeader ? () => this.#onClickHeaderMenuContactLink() : () => { },
+                                    children: [this.#chevronRight()],
+                                }),
+                            ],
+                        }),
                         $li({
                             className: "navLinks__item",
                             children: [
