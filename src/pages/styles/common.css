@@ -8,11 +8,6 @@
 
 */
 
-@font-face {
-    font-family: "Local Noto Sans JP";
-    src: local("Noto Sans JP");
-}
-
 :root {
     /* page */
     --page-main-color: #ffffffff;
@@ -130,15 +125,13 @@ header {
 }
 
 .header-menu {
-    --padding-top-bottom: 4rem;
-    --padding-left-right: 2rem;
-
     position: fixed;
     top: calc(0% + var(--header-height));
     left: 100%;
 
-    width: calc(100vw - var(--padding-left-right) * 2);
-    height: calc(100vh - var(--padding-top-bottom) * 2 - var(--header-height));
+    box-sizing: border-box;
+    width: calc(100dvw);
+    height: calc(100dvh - var(--header-height));
 
     display: flex;
     flex-direction: column;
@@ -146,7 +139,7 @@ header {
 
     background-color: #ddd;
 
-    padding: var(--padding-top-bottom) var(--padding-left-right);
+    padding: 4rem 2rem;
     gap: 4rem;
 
     z-index: 100;
