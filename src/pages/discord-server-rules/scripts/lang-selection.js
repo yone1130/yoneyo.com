@@ -30,7 +30,7 @@ class LanguageSelector {
      * 
      * @returns {Promise<void>}
      */
-    async initialize() {
+    initialize() {
         const initialLanguage = this.#getClientLanguage();
         this.#changePageLanguage(initialLanguage);
         this.#setupLanguageSwitchingEvents();
@@ -106,4 +106,4 @@ class LanguageSelector {
  */
 const languageSelector = new LanguageSelector();
 
-await languageSelector.initialize();
+languageSelector.initialize();
