@@ -63,7 +63,67 @@
 </head>
 
 <body>
-    <header></header>
+    <header>
+        <div class="header-wrapper">
+            <div id="headerLogo" class="header-logo">
+                <img class="header-logo-image" src="https://cdn.yoneyo.com/images/yone_logos/yone_icon.png"
+                    alt="Yone's icon">
+                <span class="header-title">
+                    よね/Yone
+                </span>
+            </div>
+
+            <button id="headerMenuButton" class="header-menu-button">
+                <span class="material-symbols-outlined header-menu-button-icon--open">
+                    menu
+                </span>
+                <span class="material-symbols-outlined header-menu-button-icon--close">
+                    close
+                </span>
+            </button>
+        </div>
+        <div id="headerMenu" class="header-menu">
+            <nav id="headerNavLinks" class="navLinks">
+                <ul class="navLinks__list">
+                    <li class="navLinks__item">
+                        <a href="/">
+                            ホーム
+                            <span class="material-symbols-outlined">
+                                chevron_right
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="navLinks__item">
+                        <a href="/#contact">
+                            お問い合わせ
+                            <span class="material-symbols-outlined">
+                                chevron_right
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="navLinks__item">
+                        <a href="/sitemap/">
+                            サイトマップ
+                            <span class="material-symbols-outlined">
+                                chevron_right
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="navLinks__item">
+                        <a href="/hosts/">
+                            サブドメインリスト
+                            <span class="material-symbols-outlined">
+                                chevron_right
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <main class="page">
         <section id="card" class="section hero-header flex-column-center">
@@ -359,7 +419,51 @@
         </section>
     </main>
 
-    <footer></footer>
+    <footer>
+        <nav id="footerNavLinks" class="navLinks">
+            <ul class="navLinks__list">
+                <li class="navLinks__item">
+                    <a href="/">
+                        ホーム
+                        <span class="material-symbols-outlined">
+                            chevron_right
+                        </span>
+                    </a>
+                </li>
+
+                <li class="navLinks__item">
+                    <a href="/#contact">
+                        お問い合わせ
+                        <span class="material-symbols-outlined">
+                            chevron_right
+                        </span>
+                    </a>
+                </li>
+
+                <li class="navLinks__item">
+                    <a href="/sitemap/">
+                        サイトマップ
+                        <span class="material-symbols-outlined">
+                            chevron_right
+                        </span>
+                    </a>
+                </li>
+
+                <li class="navLinks__item">
+                    <a href="/hosts/">
+                        サブドメインリスト
+                        <span class="material-symbols-outlined">
+                            chevron_right
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="footer-wrapper">
+            <span>© よね/Yone</span>
+        </div>
+    </footer>
 </body>
 
 </html>
